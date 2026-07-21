@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Муринский, 49 — клубный дом | версия «Премиум»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js" defer></script>
+<style>
+  /* ---------- tokens: вечерний северный Петербург ---------- */
+  :root{
+    --night:#101512;        /* хвойно-чернильный */
+    --night-2:#151c17;
+    --night-3:#1a231d;
+    --limestone:#ece7db;    /* светлая интерлюдия — известняк/архбетон */
+    --limestone-2:#e4ded0;
+    --pearl:#eae5d9;        /* текст на тёмном */
+    --pearl-dim:#a8a294;
+    --ink:#191813;          /* текст на светлом */
+    --ink-dim:#5d5a4f;
+    --brass:#c9a35e;        /* единственный акцент */
+    --brass-soft:#d9b878;
+    --window:#e8c98a;       /* тёплый свет в окнах */
+    --hair:rgba(234,229,217,.14);
+    --hair-strong:rgba(234,229,217,.28);
+    --hair-ink:rgba(25,24,19,.14);
+    --hair-ink-strong:rgba(25,24,19,.3);
+
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+
+    --fs-hero:clamp(3.2rem, 2rem + 5.2vw, 6.5rem);
+    --fs-state:clamp(1.9rem, 1.4rem + 2.4vw, 3.4rem);
+    --fs-h2:clamp(1.9rem, 1.5rem + 1.8vw, 3rem);
+    --fs-num:clamp(2.6rem, 2rem + 2.6vw, 4.4rem);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{animation:none !important; transition:none !important}
+  }
+
+  body{
+    margin:0; background:var(--night); color:var(--pearl);
+    font-family:var(--sans); font-weight:300; line-height:1.7; font-size:16.5px;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:var(--serif); font-weight:500; margin:0; line-height:1.08; text-wrap:balance; letter-spacing:.005em}
+  a{color:inherit}
+  ::selection{background:var(--brass); color:var(--night)}
+
+  .wrap{max-width:1240px; margin:0 auto; padding:0 clamp(22px,5vw,72px)}
+  .narrow{max-width:920px}
+
+  .kicker{
+    font-family:var(--sans); font-weight:500; font-size:.68rem; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--brass); margin:0 0 1.4rem;
+  }
+  .on-light .kicker{color:var(--brass)}
+  em.acc{font-family:var(--serif); font-style:italic; font-weight:400; color:var(--brass-soft)}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:fixed; inset:0 0 auto 0; z-index:60; transition:background .3s ease, backdrop-filter .3s ease;
+  }
+  .site-header.scrolled{background:rgba(16,21,18,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--hair)}
+  .site-header .wrap{display:flex; align-items:center; justify-content:space-between; height:84px; gap:1.4rem}
+  .brand{text-decoration:none; display:flex; flex-direction:column; line-height:1.15}
+  .brand .b1{font-family:var(--serif); font-size:1.25rem; letter-spacing:.04em}
+  .brand .b2{font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--pearl-dim); margin-top:.2rem}
+  nav.top{display:flex; gap:2rem; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase}
+  nav.top a{text-decoration:none; color:var(--pearl-dim); position:relative; padding-bottom:4px; transition:color .25s}
+  nav.top a::after{content:""; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--brass); transition:width .3s ease}
+  nav.top a:hover, nav.top a:focus-visible{color:var(--pearl)}
+  nav.top a:hover::after, nav.top a:focus-visible::after{width:100%}
+  .head-cta{display:flex; align-items:center; gap:1.6rem}
+  .head-phone{font-size:.85rem; letter-spacing:.06em; text-decoration:none; color:var(--pearl-dim); transition:color .25s; white-space:nowrap}
+  .head-phone:hover{color:var(--pearl)}
+  @media (max-width:1000px){ nav.top{display:none} .head-phone{display:none} }
+
+  .btn{
+    font-family:var(--sans); font-weight:500; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase;
+    padding:1em 2.1em; border:1px solid var(--brass); color:var(--brass); background:transparent;
+    text-decoration:none; display:inline-block; cursor:pointer; transition:background .3s, color .3s;
+  }
+  .btn:hover, .btn:focus-visible{background:var(--brass); color:var(--night)}
+  .btn:focus-visible{outline:2px solid var(--brass); outline-offset:3px}
+  .btn.solid{background:var(--brass); color:var(--night)}
+  .btn.solid:hover{background:var(--brass-soft); border-color:var(--brass-soft)}
+  .on-light .btn{border-color:var(--ink); color:var(--ink)}
+  .on-light .btn:hover{background:var(--ink); color:var(--limestone)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100svh; display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; overflow:hidden; padding-bottom:clamp(48px,7vh,96px);
+    background:
+      radial-gradient(120% 90% at 50% 110%, #23201668 0%, transparent 55%),
+      linear-gradient(to bottom, #0d1210 0%, #101512 45%, #141a15 100%);
+  }
+  .hero-facade{
+    position:absolute; right:clamp(-60px,2vw,80px); bottom:0; height:min(78vh,760px); width:auto;
+    opacity:.9; pointer-events:none;
+  }
+  @media (max-width:900px){ .hero-facade{right:50%; transform:translateX(50%); opacity:.45; height:60vh} }
+  .hero-facade .win{fill:rgba(234,229,217,.05)}
+  .hero-facade .win.lit{fill:var(--window); opacity:0; animation:lightup 1.2s ease forwards}
+  @keyframes lightup{to{opacity:.85}}
+  @media (prefers-reduced-motion: reduce){ .hero-facade .win.lit{opacity:.85} }
+
+  .hero-inner{position:relative; z-index:2}
+  .hero h1{font-size:var(--fs-hero); font-weight:500; letter-spacing:.01em}
+  .hero h1 .thin{display:block; font-size:.24em; font-family:var(--sans); font-weight:400; letter-spacing:.34em; text-transform:uppercase; color:var(--pearl-dim); margin-bottom:1.6em}
+  .hero-sub{
+    margin:2rem 0 0; max-width:34ch; font-family:var(--serif); font-style:italic; font-weight:400;
+    font-size:clamp(1.15rem,1rem + .8vw,1.6rem); color:var(--pearl-dim); line-height:1.5;
+  }
+  .hero-ctas{display:flex; gap:1.2rem; margin-top:3rem; flex-wrap:wrap; align-items:center}
+  .hero-note{font-size:.78rem; letter-spacing:.08em; color:var(--pearl-dim)}
+  .scroll-hint{
+    position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:2;
+    width:1px; height:56px; background:linear-gradient(var(--brass), transparent); opacity:.7;
+  }
+  @media (max-width:900px){ .scroll-hint{display:none} }
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(90px,12vw,170px) 0; position:relative}
+  .on-light{background:var(--limestone); color:var(--ink)}
+  .on-light h1,.on-light h2,.on-light h3{color:var(--ink)}
+  .dim{color:var(--pearl-dim)}
+  .on-light .dim{color:var(--ink-dim)}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease}
+  .reveal.in-view{opacity:1; transform:none}
+
+  /* ---------- manifesto ---------- */
+  .statement{
+    font-family:var(--serif); font-weight:500; font-size:var(--fs-state); line-height:1.28;
+    max-width:24ch; text-wrap:balance;
+  }
+  .statement em{font-style:italic; font-weight:400; color:var(--brass-soft)}
+  .fact-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.5rem,4vw,4rem);
+    margin-top:clamp(3.5rem,7vw,6rem); border-top:1px solid var(--hair); padding-top:2.6rem;
+  }
+  @media (max-width:760px){ .fact-row{grid-template-columns:1fr} }
+  .fact .n{font-family:var(--serif); font-weight:400; font-size:var(--fs-num); line-height:1; color:var(--pearl)}
+  .fact .n small{font-size:.4em; color:var(--brass); letter-spacing:.04em; margin-left:.15em}
+  .fact .l{margin-top:.8rem; font-size:.86rem; letter-spacing:.04em; color:var(--pearl-dim); max-width:26ch}
+
+  /* ---------- editorial split ---------- */
+  .ed-split{display:grid; grid-template-columns:5fr 6fr; gap:clamp(2.5rem,6vw,6.5rem); align-items:center}
+  .ed-split.flip{grid-template-columns:6fr 5fr}
+  @media (max-width:900px){ .ed-split,.ed-split.flip{grid-template-columns:1fr} }
+  .ed-copy h2{font-size:var(--fs-h2); margin-bottom:1.6rem}
+  .ed-copy p{margin:0 0 1.1rem; max-width:52ch}
+  .canvas{
+    position:relative; min-height:clamp(340px,52vw,560px); overflow:hidden;
+    background:
+      radial-gradient(80% 60% at 30% 20%, rgba(201,163,94,.12), transparent 60%),
+      linear-gradient(160deg, #1c2620, #12181399 55%, #0e130f);
+  }
+  .on-light .canvas{
+    background:
+      radial-gradient(80% 60% at 70% 15%, rgba(201,163,94,.2), transparent 55%),
+      linear-gradient(165deg, #dcd5c4, #cfc7b2);
+  }
+  .canvas::after{content:""; position:absolute; inset:14px; border:1px solid var(--hair)}
+  .on-light .canvas::after{border-color:var(--hair-ink)}
+  .canvas figcaption{
+    position:absolute; left:30px; bottom:26px; font-size:.64rem; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--brass);
+  }
+  figure{margin:0}
+
+  /* ---------- location ---------- */
+  .minutes{list-style:none; margin:2.6rem 0 0; padding:0; max-width:640px}
+  .minutes li{
+    display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem;
+    padding:1.3rem 0; border-top:1px solid var(--hair);
+  }
+  .minutes li:last-child{border-bottom:1px solid var(--hair)}
+  .minutes .place{font-size:1rem; letter-spacing:.02em}
+  .minutes .place small{display:block; font-size:.74rem; color:var(--pearl-dim); letter-spacing:.06em; margin-top:.15rem}
+  .minutes .t{font-family:var(--serif); font-weight:400; font-size:1.7rem; color:var(--brass-soft); white-space:nowrap}
+  .minutes .t small{font-family:var(--sans); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--pearl-dim); margin-left:.4em}
+  .parks{margin-top:2.4rem; font-family:var(--serif); font-style:italic; font-weight:400; font-size:1.1rem; color:var(--pearl-dim); max-width:46ch; line-height:1.7}
+
+  /* ---------- apartments (typographic) ---------- */
+  .tabs{display:flex; gap:2rem; flex-wrap:wrap; margin:2.8rem 0 0; border-bottom:1px solid var(--hair-ink)}
+  .tabs input{position:absolute; opacity:0; pointer-events:none}
+  .tabs label{
+    font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-dim);
+    padding:0 0 1rem; cursor:pointer; position:relative; transition:color .25s;
+  }
+  .tabs label::after{content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0; background:var(--ink); transition:width .3s}
+  .tabs input:checked + label{color:var(--ink)}
+  .tabs input:checked + label::after{width:100%}
+  .tabs input:focus-visible + label{outline:2px solid var(--brass); outline-offset:3px}
+  .tabs label:hover{color:var(--ink)}
+
+  .flat-list{list-style:none; margin:0; padding:0}
+  .flat-row{
+    display:grid; grid-template-columns:minmax(90px,140px) 1fr auto auto; gap:clamp(1rem,3vw,3rem);
+    align-items:baseline; padding:2.1rem 0; border-bottom:1px solid var(--hair-ink);
+    transition:opacity .3s; text-decoration:none;
+  }
+  .flat-row[hidden]{display:none}
+  @media (max-width:760px){
+    .flat-row{grid-template-columns:1fr auto; row-gap:.4rem}
+    .flat-row .fr-desc{grid-column:1 / -1}
+  }
+  .fr-type{font-family:var(--serif); font-weight:500; font-size:clamp(2rem,1.6rem+1.6vw,3.2rem); line-height:1; color:var(--ink)}
+  .fr-desc{font-size:.92rem; color:var(--ink-dim); max-width:44ch}
+  .fr-desc b{display:block; font-weight:500; color:var(--ink); letter-spacing:.02em; margin-bottom:.15rem}
+  .fr-area{font-size:.85rem; color:var(--ink-dim); white-space:nowrap}
+  .fr-price{font-family:var(--serif); font-weight:500; font-size:1.35rem; color:var(--ink); white-space:nowrap}
+  .fr-price small{display:block; font-family:var(--sans); font-weight:400; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); text-align:right; margin-top:.2rem}
+  .flat-row:hover .fr-type{color:var(--brass)}
+  .flats-note{margin-top:2rem; font-size:.8rem; color:var(--ink-dim); letter-spacing:.04em}
+
+  /* ---------- collection ---------- */
+  .collection{
+    background:
+      radial-gradient(90% 70% at 80% 100%, rgba(232,201,138,.07), transparent 60%),
+      var(--night-2);
+  }
+  .col-grid{display:grid; grid-template-columns:1fr auto; gap:clamp(2.5rem,6vw,7rem); align-items:end}
+  @media (max-width:900px){ .col-grid{grid-template-columns:1fr} }
+  .big-measure{
+    font-family:var(--serif); font-weight:400; font-size:clamp(5rem,3rem + 12vw,13rem); line-height:.9;
+    color:transparent; -webkit-text-stroke:1px var(--brass); letter-spacing:.02em; white-space:nowrap;
+  }
+  .big-measure small{font-size:.22em; -webkit-text-stroke:0; color:var(--brass); letter-spacing:.2em; vertical-align:.5em}
+  .col-points{list-style:none; margin:2.4rem 0 0; padding:0; max-width:520px}
+  .col-points li{padding:1.1rem 0; border-top:1px solid var(--hair); font-size:.95rem; color:var(--pearl-dim)}
+  .col-points b{color:var(--pearl); font-weight:500}
+
+  /* ---------- quiet luxury ---------- */
+  .quiet{counter-reset:q}
+  .quiet-list{list-style:none; margin:3rem 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 clamp(2.5rem,6vw,6rem)}
+  @media (max-width:860px){ .quiet-list{grid-template-columns:1fr} }
+  .quiet-list li{counter-increment:q; padding:2rem 0; border-top:1px solid var(--hair)}
+  .quiet-list li::before{
+    content:counter(q,decimal-leading-zero); font-family:var(--serif); font-style:italic;
+    color:var(--brass); font-size:1rem; display:block; margin-bottom:.7rem; letter-spacing:.1em;
+  }
+  .quiet-list b{display:block; font-family:var(--serif); font-weight:500; font-size:1.35rem; margin-bottom:.45rem; color:var(--pearl); letter-spacing:.01em}
+  .quiet-list p{margin:0; font-size:.9rem; color:var(--pearl-dim); max-width:44ch}
+
+  /* ---------- residence contour ---------- */
+  .contour-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.6rem,4vw,3.4rem); margin-top:3.4rem}
+  @media (max-width:960px){ .contour-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .contour-grid{grid-template-columns:1fr} }
+  .contour .cn{font-family:var(--serif); font-weight:400; font-size:2.6rem; line-height:1; color:var(--ink)}
+  .contour .cn small{font-size:.42em; color:var(--brass); letter-spacing:.04em}
+  .contour h3{font-family:var(--sans); font-weight:500; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; margin:.9rem 0 .5rem; color:var(--ink)}
+  .contour p{margin:0; font-size:.86rem; color:var(--ink-dim)}
+
+  /* ---------- developer ---------- */
+  .dev-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,6vw,6rem); align-items:center}
+  @media (max-width:860px){ .dev-grid{grid-template-columns:1fr} }
+  .dev-stats{display:flex; flex-direction:column}
+  .dev-stat{display:flex; align-items:baseline; justify-content:space-between; gap:2rem; padding:1.4rem 0; border-top:1px solid var(--hair)}
+  .dev-stat:last-child{border-bottom:1px solid var(--hair)}
+  .dev-stat .n{font-family:var(--serif); font-weight:400; font-size:2.4rem; color:var(--brass-soft)}
+  .dev-stat .l{font-size:.85rem; color:var(--pearl-dim); text-align:right}
+
+  /* ---------- form ---------- */
+  .final{
+    background:
+      radial-gradient(100% 80% at 50% 0%, rgba(201,163,94,.08), transparent 55%),
+      var(--night-3);
+  }
+  .final-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,7vw,7rem); align-items:start}
+  @media (max-width:900px){ .final-grid{grid-template-columns:1fr} }
+  .final h2{font-size:var(--fs-h2)}
+  .final .lede{margin-top:1.4rem; color:var(--pearl-dim); max-width:44ch}
+
+  form.lead{display:flex; flex-direction:column; gap:2.2rem; padding-top:.6rem}
+  .fld{position:relative}
+  .fld input, .fld select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--hair-strong);
+    color:var(--pearl); font-family:var(--sans); font-weight:300; font-size:1.05rem;
+    padding:.7em 0; letter-spacing:.02em; border-radius:0;
+  }
+  .fld select option{background:var(--night); color:var(--pearl)}
+  .fld label{
+    display:block; font-size:.62rem; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:.3rem;
+  }
+  .fld input::placeholder{color:var(--pearl-dim); opacity:.7}
+  .fld input:focus-visible, .fld select:focus-visible{outline:none; border-bottom-color:var(--brass)}
+  .consent{display:flex; gap:.8rem; align-items:flex-start; font-size:.78rem; color:var(--pearl-dim); line-height:1.6}
+  .consent input{margin-top:.25rem; accent-color:var(--brass)}
+  .success-msg{display:none; border:1px solid var(--brass); color:var(--brass-soft); padding:1rem 1.2rem; font-size:.88rem; letter-spacing:.03em}
+  .success-msg.show{display:block}
+  .form-note{font-size:.68rem; letter-spacing:.1em; color:var(--pearl-dim); text-transform:uppercase}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--hair); padding:clamp(48px,7vw,80px) 0; background:var(--night)}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:2.5rem; font-size:.85rem; color:var(--pearl-dim)}
+  @media (max-width:760px){ .foot-grid{grid-template-columns:1fr} }
+  .foot-grid h4{font-family:var(--sans); font-weight:500; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--brass); margin:0 0 1.1rem}
+  .foot-grid a{display:block; text-decoration:none; color:var(--pearl-dim); margin-bottom:.6rem; transition:color .25s}
+  .foot-grid a:hover{color:var(--pearl)}
+  .foot-grid p{margin:0; max-width:36ch}
+  .foot-bottom{margin-top:3rem; padding-top:1.6rem; border-top:1px solid var(--hair); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.7rem; letter-spacing:.06em; color:var(--pearl-dim)}
+
+  #cookie{
+    position:fixed; left:18px; right:18px; bottom:18px; max-width:540px; margin:0 auto;
+    background:var(--night-3); border:1px solid var(--hair-strong); padding:1rem 1.2rem;
+    display:flex; align-items:center; gap:1.2rem; justify-content:space-between; font-size:.8rem;
+    color:var(--pearl-dim); z-index:80; transform:translateY(150%); transition:transform .45s ease;
+  }
+  #cookie.show{transform:none}
+
+  .mock-badge{
+    position:fixed; top:96px; right:16px; z-index:90; font-size:.58rem; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--pearl-dim); background:rgba(16,21,18,.7);
+    border:1px solid var(--hair); padding:.5em .9em; pointer-events:none; backdrop-filter:blur(6px);
+  }
+  /* ---------- правки v2: шапка, герой, медиа, lottie ---------- */
+  .site-header::before{
+    content:""; position:absolute; left:0; right:0; top:0; height:1px;
+    background:linear-gradient(90deg, transparent, var(--brass) 28%, var(--brass) 72%, transparent);
+    opacity:.55;
+  }
+  .brand{flex-direction:row; align-items:center; gap:.95rem}
+  .brand-mark{
+    width:42px; height:42px; border:1px solid var(--brass); flex:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-weight:500; font-size:1.15rem; color:var(--brass);
+    transition:background .3s, color .3s;
+  }
+  .brand:hover .brand-mark, .brand:focus-visible .brand-mark{background:var(--brass); color:var(--night)}
+  .brand-text{display:flex; flex-direction:column; line-height:1.15}
+  .brand .b1 i{font-style:italic; font-weight:400; color:var(--brass-soft)}
+  .brand .b2 b{color:var(--brass); font-weight:500}
+  .site-header.scrolled .head-cta .btn{background:var(--brass); color:var(--night)}
+
+  @media (min-width:901px){ .hero-inner{max-width:62%} }
+  .hero-facade{
+    opacity:.85;
+    -webkit-mask-image:linear-gradient(to right, transparent, #000 28%);
+    mask-image:linear-gradient(to right, transparent, #000 28%);
+  }
+  .grain{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:.05; mix-blend-mode:screen}
+
+  .canvas.media{padding:0}
+  .canvas .art{position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1}
+  .canvas.media::after{z-index:2}
+  .canvas.media figcaption{z-index:3; text-shadow:0 1px 10px rgba(0,0,0,.45)}
+  .on-light .canvas.media figcaption{color:#7d5f2c; text-shadow:none}
+
+  .rosette{
+    position:absolute; top:clamp(66px,9vw,120px); right:clamp(22px,5vw,80px);
+    width:clamp(96px,11vw,150px); aspect-ratio:1; opacity:.85; pointer-events:none;
+  }
+  @media (max-width:760px){ .rosette{display:none} }
+
+  .dusk-strip{margin-top:clamp(3rem,7vw,5.5rem)}
+  .dusk-strip .canvas{min-height:0; aspect-ratio:21/8}
+  @media (max-width:700px){ .dusk-strip .canvas{aspect-ratio:16/10} }
+
+  #cookie{left:18px; right:auto; margin:0; max-width:420px}
+  @media (max-width:560px){ #cookie{right:18px; max-width:none} }
+
+  /* ---------- планировки: аккордеон ---------- */
+  @media (max-width:1220px){ .head-phone{display:none} }
+
+  .flat-acc{border-bottom:1px solid var(--hair-ink)}
+  .flat-acc[hidden]{display:none}
+  .flat-acc summary{
+    display:grid; grid-template-columns:minmax(90px,140px) 1fr auto 34px;
+    gap:clamp(1rem,3vw,3rem); align-items:baseline; padding:2rem 0;
+    cursor:pointer; list-style:none;
+  }
+  .flat-acc summary::-webkit-details-marker{display:none}
+  @media (max-width:760px){
+    .flat-acc summary{grid-template-columns:1fr auto 30px; row-gap:.4rem}
+    .flat-acc summary .fr-desc{grid-column:1 / -1}
+  }
+  .flat-acc summary:hover .fr-type, .flat-acc summary:focus-visible .fr-type{color:var(--brass)}
+  .flat-acc summary:focus-visible{outline:2px solid var(--brass); outline-offset:3px}
+  .acc-x{
+    position:relative; width:30px; height:30px; align-self:center; justify-self:end;
+    border:1px solid var(--hair-ink-strong); border-radius:50%; transition:border-color .3s, background .3s;
+  }
+  .acc-x::before, .acc-x::after{
+    content:""; position:absolute; top:50%; left:50%; background:var(--ink); transition:transform .3s, background .3s;
+  }
+  .acc-x::before{width:12px; height:1px; transform:translate(-50%,-50%)}
+  .acc-x::after{width:1px; height:12px; transform:translate(-50%,-50%)}
+  .flat-acc[open] .acc-x{background:var(--ink); border-color:var(--ink)}
+  .flat-acc[open] .acc-x::before, .flat-acc[open] .acc-x::after{background:var(--limestone)}
+  .flat-acc[open] .acc-x::after{transform:translate(-50%,-50%) rotate(90deg)}
+
+  .acc-body{
+    display:grid; grid-template-columns:6fr 5fr; gap:clamp(1.8rem,4vw,4rem);
+    padding:0 0 3rem; align-items:start;
+  }
+  @media (max-width:860px){ .acc-body{grid-template-columns:1fr} }
+  .plan{
+    margin:0; position:relative; background:#f4efe3; border:1px solid var(--hair-ink);
+  }
+  .plan svg{display:block; width:100%; height:auto}
+  .plan figcaption{
+    padding:.8rem 1.1rem; border-top:1px solid var(--hair-ink);
+    font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:#7d5f2c;
+  }
+  .acc-info p{margin:0 0 1.2rem; font-size:.95rem; color:var(--ink-dim); max-width:48ch}
+  .acc-info p b{color:var(--ink); font-weight:500}
+  .swatches{display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; max-width:420px; margin:1.6rem 0 .7rem}
+  .sw{position:relative; aspect-ratio:1; border:1px solid var(--hair-ink); display:block; overflow:hidden}
+  .sw i{
+    position:absolute; left:.7rem; bottom:.6rem; right:.5rem; font-style:normal;
+    font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(25,24,19,.75);
+  }
+  .sw-stone{background:linear-gradient(145deg,#bcb6a8,#8f897b)}
+  .sw-oak{background:repeating-linear-gradient(97deg,#8a6a45 0 7px,#7a5c3a 7px 10px,#93714b 10px 16px)}
+  .sw-oak i, .sw-brass i{color:rgba(255,248,233,.85)}
+  .sw-brass{background:linear-gradient(135deg,#e0c184,#a67f3f 55%,#d9b878)}
+  .sw-note{font-size:.68rem !important; letter-spacing:.14em; text-transform:uppercase; color:#7d5f2c !important; margin-bottom:1.8rem !important}
+
+  /* ---------- планировки: чипы и карточка плана ---------- */
+  .tabs{border-bottom:none; gap:.7rem; align-items:center}
+  .tabs label{
+    padding:.7em 1.7em; border:1px solid var(--hair-ink-strong); border-radius:999px;
+    font-size:.68rem; letter-spacing:.2em; color:var(--ink-dim);
+  }
+  .tabs label::after{content:none}
+  .tabs input:checked + label{background:var(--ink); border-color:var(--ink); color:var(--limestone)}
+  .tabs label:hover{border-color:var(--brass); color:var(--ink)}
+
+  .acc-body{grid-template-columns:7fr 4fr}
+  @media (max-width:860px){ .acc-body{grid-template-columns:1fr} }
+  .plan{
+    background:#f6f1e5;
+    box-shadow:0 1px 0 rgba(25,24,19,.04), 0 28px 56px -36px rgba(25,24,19,.4);
+  }
+  .plan svg{padding:clamp(.5rem,1.6vw,1.2rem)}
+  .plan figcaption{
+    display:flex; justify-content:space-between; align-items:baseline; gap:1.2rem; flex-wrap:wrap;
+  }
+  .plan figcaption b{
+    font-family:var(--serif); font-weight:500; font-size:1.05rem; letter-spacing:.02em;
+    color:var(--ink); text-transform:none;
+  }
+</style>
+</head>
+<body>
+<div class="mock-badge">Версия «Премиум» · макет</div>
+
+<header class="site-header" id="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">49</span>
+      <span class="brand-text">
+        <span class="b1">Муринский<i>,&nbsp;49</i></span>
+        <span class="b2">Клубный дом · <b>Санкт-Петербург</b> · ФСК</span>
+      </span>
+    </a>
+    <nav class="top">
+      <a href="#place">Место</a>
+      <a href="#architecture">Архитектура</a>
+      <a href="#flats">Квартиры</a>
+      <a href="#developer">Застройщик</a>
+    </nav>
+    <div class="head-cta">
+      <a class="head-phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+      <a class="btn" href="#contact">Консультация</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO · дом в сумерках -->
+  <section class="hero" aria-label="Главный экран">
+    <svg class="hero-facade" viewBox="0 0 460 640" aria-hidden="true" focusable="false">
+      <!-- силуэт: 5 секций, 10 жилых этажей -->
+      <rect x="10" y="60" width="440" height="580" fill="none" stroke="rgba(234,229,217,.22)" stroke-width="1"/>
+      <line x1="10" y1="60" x2="450" y2="60" stroke="rgba(201,163,94,.5)" stroke-width="1"/>
+      <g stroke="rgba(234,229,217,.1)" stroke-width="1">
+        <line x1="98" y1="60" x2="98" y2="640"/>
+        <line x1="186" y1="60" x2="186" y2="640"/>
+        <line x1="274" y1="60" x2="274" y2="640"/>
+        <line x1="362" y1="60" x2="362" y2="640"/>
+      </g>
+      <!-- окна: 5 секций x 2 окна x 10 этажей -->
+      <g id="windows"></g>
+      <!-- первый этаж — витрины коммерции -->
+      <g fill="rgba(232,201,138,.14)">
+        <rect x="24" y="596" width="60" height="32"/>
+        <rect x="112" y="596" width="60" height="32"/>
+        <rect x="200" y="596" width="60" height="32"/>
+        <rect x="288" y="596" width="60" height="32"/>
+        <rect x="376" y="596" width="60" height="32"/>
+      </g>
+    </svg>
+
+    <svg class="grain" aria-hidden="true" focusable="false"><filter id="g1"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/></filter><rect width="100%" height="100%" filter="url(#g1)"/></svg>
+
+    <div class="wrap hero-inner">
+      <h1>
+        <span class="thin">Клубный дом бизнес-класса · Санкт-Петербург</span>
+        Муринский, 49
+      </h1>
+      <p class="hero-sub">Двести двадцать девять квартир за архитектурным бетоном — на профессорском севере Петербурга, в пяти минутах от «Площади Мужества».</p>
+      <div class="hero-ctas">
+        <a class="btn solid" href="#flats">Выбрать квартиру</a>
+        <span class="hero-note">От 18,47 млн ₽ · без студий</span>
+      </div>
+    </div>
+    <span class="scroll-hint" aria-hidden="true"></span>
+  </section>
+
+  <!-- ГЕНИЙ МЕСТА -->
+  <section id="place" class="reveal">
+    <div class="rosette" id="rosette" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker">Гений места</p>
+      <p class="statement">Район, который построили Политех и Лесотехническая академия, — и который сто лет живёт <em>размеренно, зелено и по-своему.</em></p>
+      <div class="fact-row">
+        <div class="fact">
+          <div class="n">500<small>м</small></div>
+          <p class="l">до станции метро «Площадь Мужества» — пять минут неспешным шагом</p>
+        </div>
+        <div class="fact">
+          <div class="n">5</div>
+          <p class="l">парков и скверов в прогулочной доступности — от сквера Лихачёва до Сосновки</p>
+        </div>
+        <div class="fact">
+          <div class="n">1900-е</div>
+          <p class="l">через дорогу — единственная сохранившаяся деревянная дача начала XX века</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- АРХИТЕКТУРА -->
+  <section id="architecture" class="on-light reveal">
+    <div class="wrap">
+      <div class="ed-split">
+        <div class="ed-copy">
+          <p class="kicker">Архитектура</p>
+          <h2>Бетон, который ведёт себя как камень</h2>
+          <p class="dim">Фасады из архитектурного бетона по системе навесного вентилируемого фасада: материал, который не имитирует благородство, а обладает им. Декоративные розетки и панно отлиты в той же фактуре — рельеф работает светом и тенью, без накладного декора.</p>
+          <p class="dim">Архитектура и концепция создаются с привлечением признанного архитектурного бюро. Имя авторов будет объявлено отдельно.</p>
+        </div>
+        <figure class="canvas media">
+          <svg class="art" viewBox="0 0 800 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs>
+              <filter id="conc"><feTurbulence type="fractalNoise" baseFrequency="0.14 0.1" numOctaves="5" seed="11"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.55 0.55 0.55 0 0"/></filter>
+              <linearGradient id="rake" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6f1e1" stop-opacity=".85"/>
+                <stop offset=".45" stop-color="#e0d8c2" stop-opacity="0"/>
+                <stop offset="1" stop-color="#8f866d" stop-opacity=".4"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="620" fill="#d9d2be"/>
+            <rect width="800" height="620" filter="url(#conc)" opacity=".33"/>
+            <rect width="800" height="620" fill="url(#rake)"/>
+            <g stroke="#4d4636" stroke-opacity=".26" stroke-width="1.5">
+              <line x1="266" y1="0" x2="266" y2="620"/>
+              <line x1="533" y1="0" x2="533" y2="620"/>
+              <line x1="0" y1="310" x2="800" y2="310"/>
+            </g>
+            <g transform="translate(400,178)" stroke="#4d4636" stroke-opacity=".42" fill="none">
+              <circle r="86" stroke-width="1.6"/>
+              <circle r="62" stroke-width="1"/>
+              <g stroke-width="1">
+                <line x1="0" y1="-86" x2="0" y2="-62"/><line x1="0" y1="86" x2="0" y2="62"/>
+                <line x1="-86" y1="0" x2="-62" y2="0"/><line x1="86" y1="0" x2="62" y2="0"/>
+                <line x1="-60.8" y1="-60.8" x2="-43.8" y2="-43.8"/><line x1="60.8" y1="60.8" x2="43.8" y2="43.8"/>
+                <line x1="-60.8" y1="60.8" x2="-43.8" y2="43.8"/><line x1="60.8" y1="-60.8" x2="43.8" y2="-43.8"/>
+              </g>
+              <circle r="9" fill="#4d4636" fill-opacity=".38" stroke="none"/>
+            </g>
+          </svg>
+          <figcaption>Стилевое превью · сюда встанет рендер фасада от архбюро</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЛОКАЦИЯ -->
+  <section id="minutes" class="reveal">
+    <div class="wrap">
+      <div class="ed-split flip">
+        <div>
+          <p class="kicker">Локация</p>
+          <h2 style="font-size:var(--fs-h2); margin-bottom:.6rem">Город на расстоянии привычки</h2>
+          <ul class="minutes">
+            <li>
+              <span class="place">Метро «Площадь Мужества»<small>красная линия, прямая до Московского вокзала</small></span>
+              <span class="t">5<small>мин пешком</small></span>
+            </li>
+            <li>
+              <span class="place">Невский проспект<small>с одной пересадкой</small></span>
+              <span class="t">25<small>мин на метро</small></span>
+            </li>
+            <li>
+              <span class="place">Развязка КАД<small>ближайшая из четырёх в радиусе 20 минут</small></span>
+              <span class="t">11<small>мин на авто</small></span>
+            </li>
+            <li>
+              <span class="place">Петроградская сторона</span>
+              <span class="t">15<small>мин на авто</small></span>
+            </li>
+            <li>
+              <span class="place">Аэропорт Пулково<small>по КАД</small></span>
+              <span class="t">50<small>мин на авто</small></span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <figure class="canvas media" style="min-height:clamp(300px,40vw,480px)">
+            <svg class="art" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="pk" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#24331f"/>
+                  <stop offset=".62" stop-color="#141f18"/>
+                  <stop offset="1" stop-color="#0c1310"/>
+                </linearGradient>
+                <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="26"/></filter>
+                <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#e8c98a" stop-opacity=".75"/><stop offset="1" stop-color="#e8c98a" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="800" height="600" fill="url(#pk)"/>
+              <g filter="url(#soft)">
+                <ellipse cx="180" cy="130" rx="150" ry="100" fill="#3a5232" opacity=".7"/>
+                <ellipse cx="560" cy="90" rx="190" ry="120" fill="#2c4128" opacity=".8"/>
+                <ellipse cx="700" cy="300" rx="140" ry="160" fill="#33492c" opacity=".6"/>
+                <ellipse cx="90" cy="360" rx="120" ry="150" fill="#2a3d26" opacity=".7"/>
+              </g>
+              <circle cx="470" cy="200" r="110" fill="url(#sun)"/>
+              <g stroke="#0a0f0b" stroke-width="14" opacity=".85">
+                <line x1="150" y1="40" x2="140" y2="600"/>
+                <line x1="640" y1="20" x2="655" y2="600"/>
+                <line x1="330" y1="120" x2="325" y2="600"/>
+              </g>
+              <path d="M340 600 L430 600 L412 380 L372 380 Z" fill="#c9a35e" opacity=".12"/>
+              <g fill="#e8c98a" opacity=".5" filter="url(#soft)">
+                <circle cx="250" cy="250" r="8"/><circle cx="520" cy="320" r="6"/><circle cx="600" cy="180" r="7"/>
+              </g>
+            </svg>
+            <figcaption>Стилевое превью · аллеи района — сюда встанет фото локации</figcaption>
+          </figure>
+          <p class="parks">Сквер Академика Лихачёва — в трёх минутах, дальше Серебряный пруд, парки Лесотехнической академии и Политеха, Сосновка. Пять зелёных маршрутов, ни одного вылетного шоссе под окнами.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КВАРТИРЫ -->
+  <section id="flats" class="on-light reveal">
+    <div class="wrap">
+      <p class="kicker">Квартиры</p>
+      <h2 style="font-size:var(--fs-h2); max-width:20ch">229 квартир. Без студий — из принципа</h2>
+      <p class="dim" style="max-width:52ch; margin-top:1.4rem">Классические и европейские планировки от 37,35 до 106,41 м²: кухни-гостиные, мастер-спальни, гардеробные и ниши для встроенного хранения. Дом рассчитан на долгую жизнь, а не на аренду.</p>
+
+      <div class="tabs" role="group" aria-label="Фильтр по типу квартиры">
+        <input type="radio" name="apt" id="t-all" checked>
+        <label for="t-all">Все</label>
+        <input type="radio" name="apt" id="t-2e">
+        <label for="t-2e">2Е</label>
+        <input type="radio" name="apt" id="t-2k">
+        <label for="t-2k">2К</label>
+        <input type="radio" name="apt" id="t-3e">
+        <label for="t-3e">3Е</label>
+        <input type="radio" name="apt" id="t-4e">
+        <label for="t-4e">4Е</label>
+        <input type="radio" name="apt" id="t-4k">
+        <label for="t-4k">4К</label>
+      </div>
+
+      <div class="flat-list-wrap">
+
+        <details class="flat-acc" data-type="2e" open>
+          <summary>
+            <span class="fr-type">2Е</span>
+            <span class="fr-desc"><b>С кухней-гостиной</b>79 квартир · от 37,35 м²</span>
+            <span class="fr-price">от 18,47 млн ₽</span>
+            <span class="acc-x" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-body">
+            <figure class="plan">
+              <svg viewBox="0 0 440 320" aria-label="Пример планировки 2Е">
+                <rect x="24" y="24" width="392" height="252" fill="#efe7d6"/>
+                <g fill="none" stroke="#191813" stroke-width="5">
+                  <rect x="24" y="24" width="392" height="252"/>
+                </g>
+                <g fill="none" stroke="#191813" stroke-width="1.6">
+                  <line x1="270" y1="24" x2="270" y2="276"/>
+                  <line x1="270" y1="150" x2="416" y2="150"/>
+                  <line x1="330" y1="150" x2="330" y2="276"/>
+                </g>
+                <path d="M270 60 A34 34 0 0 1 304 94" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <path d="M330 190 A28 28 0 0 1 358 218" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <g fill="none" stroke="#19181366" stroke-width="1.2">
+                  <rect x="52" y="196" width="120" height="56"/>
+                  <rect x="300" y="176" width="18" height="76"/>
+                </g>
+                <rect x="70" y="16" width="120" height="8" fill="#c9a35e" opacity=".55"/>
+                <g font-family="Manrope,Arial" font-size="10.5" letter-spacing="2.5" fill="#5d5a4f">
+                  <text x="52" y="72">КУХНЯ-ГОСТИНАЯ</text>
+                  <text x="52" y="188">ЗОНА ОТДЫХА</text>
+                  <text x="288" y="60">СПАЛЬНЯ</text>
+                  <text x="286" y="200" font-size="9">С/У</text>
+                  <text x="344" y="200" font-size="9">ХОЛЛ</text>
+                </g>
+                <text x="330" y="300" font-family="Cormorant Garamond,Georgia" font-size="20" fill="#191813">37,4–48 м²</text>
+              </svg>
+              <figcaption><b>Планировка 2Е · 37,4–48 м²</b><span>пример · финальные планы — от застройщика</span></figcaption>
+            </figure>
+            <div class="acc-info">
+              <p><b>Формат, с которого начинается дом.</b> Спальня за закрытой дверью и просторная кухня-гостиная вместо двух тесных комнат: место для дивана, обеденного стола и утреннего света из окна с балконом.</p>
+              <p>Ниша под встроенный шкаф в холле, совмещённый санузел с местом под стиральную колонну.</p>
+              <div class="swatches">
+                <span class="sw sw-stone"><i>Микроцемент</i></span>
+                <span class="sw sw-oak"><i>Дуб натуральный</i></span>
+                <span class="sw sw-brass"><i>Латунь</i></span>
+              </div>
+              <p class="sw-note">Референсы отделки · квартиры сдаются без отделки</p>
+              <a class="btn" href="#contact" data-flat="2Е — с кухней-гостиной">Забронировать</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="flat-acc" data-type="2k">
+          <summary>
+            <span class="fr-type">2К</span>
+            <span class="fr-desc"><b>Классическая</b>10 квартир · отдельная кухня</span>
+            <span class="fr-price">от 24,64 млн ₽</span>
+            <span class="acc-x" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-body">
+            <figure class="plan">
+              <svg viewBox="0 0 440 320" aria-label="Пример планировки 2К">
+                <rect x="24" y="24" width="392" height="252" fill="#efe7d6"/>
+                <g fill="none" stroke="#191813" stroke-width="5"><rect x="24" y="24" width="392" height="252"/></g>
+                <g fill="none" stroke="#191813" stroke-width="1.6">
+                  <line x1="200" y1="24" x2="200" y2="276"/>
+                  <line x1="200" y1="170" x2="416" y2="170"/>
+                  <line x1="310" y1="170" x2="310" y2="276"/>
+                </g>
+                <path d="M200 70 A32 32 0 0 1 232 102" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <g fill="none" stroke="#19181366" stroke-width="1.2">
+                  <rect x="48" y="60" width="110" height="70"/>
+                  <rect x="240" y="52" width="140" height="60"/>
+                </g>
+                <rect x="60" y="16" width="100" height="8" fill="#c9a35e" opacity=".55"/>
+                <g font-family="Manrope,Arial" font-size="10.5" letter-spacing="2.5" fill="#5d5a4f">
+                  <text x="48" y="176">КОМНАТА</text>
+                  <text x="238" y="140">КУХНЯ</text>
+                  <text x="220" y="206" font-size="9">ПРИХОЖАЯ</text>
+                  <text x="330" y="206" font-size="9">С/У</text>
+                </g>
+                <text x="322" y="300" font-family="Cormorant Garamond,Georgia" font-size="20" fill="#191813">до 58 м²</text>
+              </svg>
+              <figcaption><b>Планировка 2К · до 58 м²</b><span>пример · финальные планы — от застройщика</span></figcaption>
+            </figure>
+            <div class="acc-info">
+              <p><b>Для тех, кто ценит традиционный уклад.</b> Отдельная кухня с дверью, изолированная комната, классическая логика пространства — редкий в новых домах формат, всего десять квартир на весь дом.</p>
+              <div class="swatches">
+                <span class="sw sw-stone"><i>Микроцемент</i></span>
+                <span class="sw sw-oak"><i>Дуб натуральный</i></span>
+                <span class="sw sw-brass"><i>Латунь</i></span>
+              </div>
+              <p class="sw-note">Референсы отделки · квартиры сдаются без отделки</p>
+              <a class="btn" href="#contact" data-flat="2К — классическая">Забронировать</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="flat-acc" data-type="3e">
+          <summary>
+            <span class="fr-type">3Е</span>
+            <span class="fr-desc"><b>Две спальни</b>91 квартира · самый востребованный формат</span>
+            <span class="fr-price">от 24,87 млн ₽</span>
+            <span class="acc-x" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-body">
+            <figure class="plan">
+              <svg viewBox="0 0 440 320" aria-label="Пример планировки 3Е">
+                <rect x="24" y="24" width="392" height="252" fill="#efe7d6"/>
+                <g fill="none" stroke="#191813" stroke-width="5"><rect x="24" y="24" width="392" height="252"/></g>
+                <g fill="none" stroke="#191813" stroke-width="1.6">
+                  <line x1="24" y1="160" x2="290" y2="160"/>
+                  <line x1="160" y1="160" x2="160" y2="276"/>
+                  <line x1="290" y1="24" x2="290" y2="276"/>
+                  <line x1="290" y1="210" x2="416" y2="210"/>
+                </g>
+                <path d="M290 66 A30 30 0 0 1 320 96" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <path d="M160 190 A26 26 0 0 1 186 216" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <g fill="none" stroke="#19181366" stroke-width="1.2">
+                  <rect x="46" y="52" width="150" height="64"/>
+                  <rect x="52" y="196" width="82" height="56"/>
+                  <rect x="316" y="52" width="76" height="110"/>
+                </g>
+                <rect x="80" y="16" width="130" height="8" fill="#c9a35e" opacity=".55"/>
+                <g font-family="Manrope,Arial" font-size="10.5" letter-spacing="2.5" fill="#5d5a4f">
+                  <text x="46" y="142">КУХНЯ-ГОСТИНАЯ</text>
+                  <text x="46" y="188">СПАЛЬНЯ 1</text>
+                  <text x="184" y="188">СПАЛЬНЯ 2</text>
+                  <text x="308" y="46">Г/Р</text>
+                  <text x="308" y="240" font-size="9">С/У · ХОЛЛ</text>
+                </g>
+                <text x="322" y="300" font-family="Cormorant Garamond,Georgia" font-size="20" fill="#191813">до 74 м²</text>
+              </svg>
+              <figcaption><b>Планировка 3Е · до 74 м²</b><span>пример · финальные планы — от застройщика</span></figcaption>
+            </figure>
+            <div class="acc-info">
+              <p><b>Формула семейной квартиры.</b> Две изолированные спальни при кухне-гостиной: детская и родительская, рабочий кабинет при необходимости. Девяносто одна квартира — сердце квартирографии дома.</p>
+              <p>Гардеробная при спальне, ниши для встроенного хранения, балкон при гостиной.</p>
+              <div class="swatches">
+                <span class="sw sw-stone"><i>Микроцемент</i></span>
+                <span class="sw sw-oak"><i>Дуб натуральный</i></span>
+                <span class="sw sw-brass"><i>Латунь</i></span>
+              </div>
+              <p class="sw-note">Референсы отделки · квартиры сдаются без отделки</p>
+              <a class="btn" href="#contact" data-flat="3Е — две спальни">Забронировать</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="flat-acc" data-type="4e">
+          <summary>
+            <span class="fr-type">4Е</span>
+            <span class="fr-desc"><b>Мастер-спальня и гардеробная</b>39 квартир · три спальни</span>
+            <span class="fr-price">от 33,85 млн ₽</span>
+            <span class="acc-x" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-body">
+            <figure class="plan">
+              <svg viewBox="0 0 440 320" aria-label="Пример планировки 4Е">
+                <rect x="24" y="24" width="392" height="252" fill="#efe7d6"/>
+                <g fill="none" stroke="#191813" stroke-width="5"><rect x="24" y="24" width="392" height="252"/></g>
+                <g fill="none" stroke="#191813" stroke-width="1.6">
+                  <line x1="24" y1="150" x2="416" y2="150"/>
+                  <line x1="150" y1="150" x2="150" y2="276"/>
+                  <line x1="278" y1="150" x2="278" y2="276"/>
+                  <line x1="250" y1="24" x2="250" y2="150"/>
+                  <line x1="250" y1="92" x2="330" y2="92"/>
+                  <line x1="330" y1="24" x2="330" y2="150"/>
+                </g>
+                <path d="M250 110 A26 26 0 0 1 276 136" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <g fill="none" stroke="#19181366" stroke-width="1.2">
+                  <rect x="44" y="48" width="150" height="60"/>
+                  <rect x="46" y="192" width="80" height="56"/>
+                  <rect x="172" y="192" width="80" height="56"/>
+                  <rect x="300" y="192" width="90" height="56"/>
+                </g>
+                <rect x="290" y="16" width="110" height="8" fill="#c9a35e" opacity=".55"/>
+                <g font-family="Manrope,Arial" font-size="10.5" letter-spacing="2.5" fill="#5d5a4f">
+                  <text x="44" y="134">КУХНЯ-ГОСТИНАЯ</text>
+                  <text x="256" y="52" font-size="9">Г/Р</text>
+                  <text x="256" y="120" font-size="9">С/У</text>
+                  <text x="340" y="52" font-size="9">С/У 2</text>
+                  <text x="46" y="182">СПАЛЬНЯ 1</text>
+                  <text x="172" y="182">СПАЛЬНЯ 2</text>
+                  <text x="298" y="182">МАСТЕР</text>
+                </g>
+                <text x="322" y="300" font-family="Cormorant Garamond,Georgia" font-size="20" fill="#191813">до 92 м²</text>
+              </svg>
+              <figcaption><b>Планировка 4Е · до 92 м²</b><span>пример · финальные планы — от застройщика</span></figcaption>
+            </figure>
+            <div class="acc-info">
+              <p><b>Квартира с приватным крылом.</b> Мастер-спальня с собственным санузлом и гардеробной, две детские, кухня-гостиная во всю ширину квартиры. Второй санузел — гостевой.</p>
+              <div class="swatches">
+                <span class="sw sw-stone"><i>Микроцемент</i></span>
+                <span class="sw sw-oak"><i>Дуб натуральный</i></span>
+                <span class="sw sw-brass"><i>Латунь</i></span>
+              </div>
+              <p class="sw-note">Референсы отделки · квартиры сдаются без отделки</p>
+              <a class="btn" href="#contact" data-flat="4Е — три спальни">Забронировать</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="flat-acc" data-type="4k">
+          <summary>
+            <span class="fr-type">4К</span>
+            <span class="fr-desc"><b>Классическая, до 106,41 м²</b>10 квартир · самые просторные резиденции</span>
+            <span class="fr-price">По запросу</span>
+            <span class="acc-x" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-body">
+            <figure class="plan">
+              <svg viewBox="0 0 440 320" aria-label="Пример планировки 4К">
+                <rect x="24" y="24" width="392" height="252" fill="#efe7d6"/>
+                <g fill="none" stroke="#191813" stroke-width="5"><rect x="24" y="24" width="392" height="252"/></g>
+                <g fill="none" stroke="#191813" stroke-width="1.6">
+                  <line x1="168" y1="24" x2="168" y2="276"/>
+                  <line x1="168" y1="150" x2="24" y2="150"/>
+                  <line x1="300" y1="24" x2="300" y2="150"/>
+                  <line x1="168" y1="150" x2="416" y2="150"/>
+                  <line x1="300" y1="150" x2="300" y2="276"/>
+                </g>
+                <path d="M168 62 A30 30 0 0 1 198 92" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <path d="M300 178 A26 26 0 0 1 326 204" fill="none" stroke="#9c8250" stroke-width="1"/>
+                <g fill="none" stroke="#19181366" stroke-width="1.2">
+                  <rect x="42" y="48" width="100" height="58"/>
+                  <rect x="42" y="180" width="100" height="60"/>
+                  <rect x="196" y="190" width="82" height="58"/>
+                  <rect x="322" y="52" width="72" height="70"/>
+                </g>
+                <rect x="60" y="16" width="90" height="8" fill="#c9a35e" opacity=".55"/>
+                <g font-family="Manrope,Arial" font-size="10.5" letter-spacing="2.5" fill="#5d5a4f">
+                  <text x="42" y="130">ГОСТИНАЯ</text>
+                  <text x="42" y="172">СПАЛЬНЯ 1</text>
+                  <text x="196" y="46">КУХНЯ</text>
+                  <text x="322" y="140">СПАЛЬНЯ 2</text>
+                  <text x="196" y="180">СПАЛЬНЯ 3</text>
+                  <text x="322" y="230" font-size="9">С/У · Г/Р</text>
+                </g>
+                <text x="300" y="300" font-family="Cormorant Garamond,Georgia" font-size="20" fill="#191813">до 106,4 м²</text>
+              </svg>
+              <figcaption><b>Планировка 4К · до 106,4 м²</b><span>пример · финальные планы — от застройщика</span></figcaption>
+            </figure>
+            <div class="acc-info">
+              <p><b>Резиденции дома.</b> Классическая четырёхкомнатная логика на площади до 106,41 м²: отдельная кухня, гостиная, три спальни, два санузла и гардеробная. Десять квартир — по одной-две на секцию.</p>
+              <div class="swatches">
+                <span class="sw sw-stone"><i>Микроцемент</i></span>
+                <span class="sw sw-oak"><i>Дуб натуральный</i></span>
+                <span class="sw sw-brass"><i>Латунь</i></span>
+              </div>
+              <p class="sw-note">Референсы отделки · квартиры сдаются без отделки</p>
+              <a class="btn" href="#contact" data-flat="4К — классическая">Забронировать</a>
+            </div>
+          </div>
+        </details>
+
+      </div>
+      <p class="flats-note">Цены стартовые, без отделки · 407 550 ₽/м² в среднем на старте продаж · ограниченное количество лотов</p>
+    </div>
+  </section>
+
+  <!-- КОЛЛЕКЦИЯ 10–11 -->
+  <section id="collection" class="collection reveal">
+    <div class="wrap">
+      <div class="col-grid">
+        <div>
+          <p class="kicker">Коллекция 10–11 этажей</p>
+          <h2 style="font-size:var(--fs-h2)">Тридцать сантиметров неба</h2>
+          <p class="dim" style="max-width:46ch; margin-top:1.4rem">На двух верхних этажах потолки поднимаются с 2,76 до 3,06 метра, а окна становятся французскими балконами с остеклением в пол. Вечерний свет, крыши старого района, Сосновка на горизонте — квартир этого уровня в доме меньше всего.</p>
+          <ul class="col-points">
+            <li><b>Потолки 3,06 м</b> — против 2,76 м на типовых этажах</li>
+            <li><b>Остекление в пол</b> со штульповым открыванием без импоста</li>
+            <li><b>Французские балконы</b> на 10–11 этажах — параметры уточняются</li>
+          </ul>
+        </div>
+        <div class="big-measure" aria-label="3,06 метра">3,06<small>М</small></div>
+      </div>
+      <div class="dusk-strip">
+        <figure class="canvas media">
+          <svg class="art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#171d18"/>
+                <stop offset=".55" stop-color="#3a3626"/>
+                <stop offset=".78" stop-color="#8a6a3e"/>
+                <stop offset="1" stop-color="#20241d"/>
+              </linearGradient>
+              <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#e8c98a" stop-opacity=".9"/><stop offset="1" stop-color="#e8c98a" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="1200" height="420" fill="url(#sky)"/>
+            <ellipse cx="820" cy="318" rx="260" ry="90" fill="url(#glow)" opacity=".5"/>
+            <path d="M0 330 L90 330 L90 300 L150 300 L150 322 L260 322 L260 286 L318 286 L318 316 L420 316 L420 296 L520 296 L520 330 L640 330 L640 276 L700 276 L700 308 L820 308 L820 322 L940 322 L940 292 L1020 292 L1020 318 L1120 318 L1120 300 L1200 300 L1200 420 L0 420 Z" fill="#141a15"/>
+            <path d="M0 372 L160 372 L160 336 L240 336 L240 366 L430 366 L430 342 L560 342 L560 372 L760 372 L760 330 L860 330 L860 362 L1040 362 L1040 344 L1200 344 L1200 420 L0 420 Z" fill="#0c110d"/>
+            <g fill="#e8c98a" opacity=".8">
+              <rect x="104" y="306" width="5" height="7"/><rect x="272" y="292" width="5" height="7"/><rect x="332" y="322" width="5" height="7"/>
+              <rect x="648" y="284" width="5" height="7"/><rect x="662" y="296" width="5" height="7"/><rect x="952" y="298" width="5" height="7"/>
+              <rect x="178" y="344" width="6" height="8"/><rect x="452" y="350" width="6" height="8"/><rect x="782" y="338" width="6" height="8"/><rect x="800" y="350" width="6" height="8"/><rect x="1062" y="350" width="6" height="8"/>
+            </g>
+            <g stroke="#0c110d" stroke-width="2"><line x1="668" y1="276" x2="668" y2="252"/><line x1="244" y1="336" x2="244" y2="318"/></g>
+          </svg>
+          <figcaption>Вид с 11 этажа · вечер — стилевое превью под рендер</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- НЕВИДИМАЯ РОСКОШЬ -->
+  <section class="quiet reveal">
+    <div class="wrap">
+      <p class="kicker">То, чего не видно на рендерах</p>
+      <p class="statement" style="max-width:22ch">Класс дома решается там, куда не смотрит камера: <em>в воде, тишине и инженерии.</em></p>
+      <ul class="quiet-list">
+        <li>
+          <b>Пять ступеней очистки воды</b>
+          <p>Собственный узел водоподготовки на весь дом: механическая очистка, обезжелезивание, сорбция, тонкая очистка и УФ-стерилизация.</p>
+        </li>
+        <li>
+          <b>Тишина от 45 дБ</b>
+          <p>Входные двери с повышенной звукоизоляцией, малошумные канализационные стояки, коллекторные шкафы вынесены из квартир в коридоры.</p>
+        </li>
+        <li>
+          <b>Горячая вода из своего теплового пункта</b>
+          <p>ГВС готовится в индивидуальных тепловых пунктах дома — стабильная температура без сезонных сюрпризов с магистрали.</p>
+        </li>
+        <li>
+          <b>Дом, который считает сам</b>
+          <p>IP-домофония с квартирным планшетом, автоматизация инженерных систем, показания счётчиков уходят диспетчеру без участия жителей.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- РЕЗИДЕНТСКИЙ КОНТУР -->
+  <section class="on-light reveal">
+    <div class="wrap">
+      <p class="kicker">Резидентский контур</p>
+      <h2 style="font-size:var(--fs-h2); max-width:22ch">От паркинга до квартиры — не выходя на улицу</h2>
+      <div class="contour-grid">
+        <div class="contour">
+          <div class="cn">156<small> м/м</small></div>
+          <h3>Подземный паркинг</h3>
+          <p>Два уровня под домом; лифт из каждой секции спускается прямо к автомобилю. Во дворе — 22 открытых места с зарядкой для электромобилей.</p>
+        </div>
+        <div class="contour">
+          <div class="cn">0<small> машин</small></div>
+          <h3>Закрытый двор</h3>
+          <p>Территория без автомобилей и случайных прохожих: единая концепция озеленения, зоны отдыха, детские и спортивные площадки.</p>
+        </div>
+        <div class="contour">
+          <div class="cn">2<small> лифта</small></div>
+          <h3>В каждой секции</h3>
+          <p>Пассажирский и грузовой, колясочная на первом этаже, единая входная группа с ресепшн и зоной ожидания.</p>
+        </div>
+        <div class="contour">
+          <div class="cn">1 266<small> м²</small></div>
+          <h3>Коммерция с улицы</h3>
+          <p>Кафе, аптеки, бьюти — с витринами и отдельными входами, без доступа на домовую территорию. Плюс Дом детского творчества «Юность».</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЗАСТРОЙЩИК -->
+  <section id="developer" class="reveal">
+    <div class="wrap">
+      <div class="dev-grid">
+        <div>
+          <p class="kicker">Застройщик</p>
+          <h2 style="font-size:var(--fs-h2)">ГК ФСК</h2>
+          <p class="dim" style="max-width:46ch; margin-top:1.4rem">Одна из крупнейших девелоперских компаний России, входит в пятёрку ведущих застройщиков страны. Цифры — по действующим материалам компании, подтвердить актуальность перед публикацией.</p>
+        </div>
+        <div class="dev-stats">
+          <div class="dev-stat"><span class="n">20 лет</span><span class="l">стабильного роста бизнеса</span></div>
+          <div class="dev-stat"><span class="n">35+</span><span class="l">проектов в стадии реализации</span></div>
+          <div class="dev-stat"><span class="n">17 млн м²</span><span class="l">совокупный объём проектов</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФОРМА -->
+  <section id="contact" class="final reveal">
+    <div class="wrap">
+      <div class="final-grid">
+        <div>
+          <p class="kicker">Премьера продаж</p>
+          <h2>Первые узнают первыми</h2>
+          <p class="lede">229 квартир на пять секций — предложение, которое не повторится в этой локации. Оставьте контакт, и мы пришлём стартовый прайс и планировки до открытых продаж.</p>
+          <p class="lede" style="font-size:.85rem; margin-top:2rem">Ипотека и рассрочка от застройщика — условия и банки-партнёры уточняются. Возможна 100% оплата.</p>
+        </div>
+        <form class="lead" id="lead-form" novalidate>
+          <div class="fld">
+            <label for="lf-name">Имя</label>
+            <input id="lf-name" name="name" type="text" autocomplete="name" required placeholder="Как к вам обращаться">
+          </div>
+          <div class="fld">
+            <label for="lf-phone">Телефон</label>
+            <input id="lf-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__">
+          </div>
+          <div class="fld">
+            <label for="lf-type">Интересует</label>
+            <select id="lf-type" name="type">
+              <option>Пока выбираю</option>
+              <option>2Е — с кухней-гостиной</option>
+              <option>2К — классическая</option>
+              <option>3Е — две спальни</option>
+              <option>4Е — три спальни</option>
+              <option>4К — классическая</option>
+              <option>Коллекция 10–11 этажей</option>
+            </select>
+          </div>
+          <label class="consent">
+            <input type="checkbox" required>
+            <span>Согласен(-на) на обработку персональных данных</span>
+          </label>
+          <button class="btn solid" type="submit" style="align-self:flex-start">Получить прайс и планировки</button>
+          <div class="success-msg" id="lead-success" role="status">Заявка принята — демо-режим макета.</div>
+          <p class="form-note">Демо-форма · в боевой версии — интеграция с CRM</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Муринский, 49</h4>
+        <p>Клубный дом бизнес-класса от ГК ФСК. 2-й Муринский проспект, 49 · Выборгский район Санкт-Петербурга, МО «Светлановское».</p>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+        <a href="#">Офис продаж — адрес уточняется</a>
+      </div>
+      <div>
+        <h4>Документы</h4>
+        <a href="#">Проектная декларация (214-ФЗ)</a>
+        <a href="#">Политика конфиденциальности</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ГК ФСК · Не является публичной офертой</span>
+      <span>Макет «Премиум» — требует рендеров, бренд-стиля и подтверждения цифр</span>
+    </div>
+  </div>
+</footer>
+
+<div id="cookie">
+  <span>Мы используем куки для аналитики.</span>
+  <button class="btn" id="cookie-accept" style="padding:.7em 1.4em">Принять</button>
+</div>
+
+<script>
+  // окна фасада: генерация + вечернее зажигание
+  (function(){
+    var g = document.getElementById('windows');
+    if (!g) return;
+    var svgns = 'http://www.w3.org/2000/svg';
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cols = [], secX = [10, 98, 186, 274, 362];
+    secX.forEach(function(x){ cols.push(x + 16); cols.push(x + 52); });
+    var lit = 0;
+    for (var f = 0; f < 10; f++){
+      var y = 76 + f * 52;
+      for (var c = 0; c < cols.length; c++){
+        var r = document.createElementNS(svgns, 'rect');
+        r.setAttribute('x', cols[c]); r.setAttribute('y', y);
+        r.setAttribute('width', 20); r.setAttribute('height', 34);
+        r.setAttribute('class', 'win');
+        // верхние 2 этажа — окна выше (потолки 3,06): чуть длиннее
+        if (f < 2){ r.setAttribute('height', 40); r.setAttribute('y', y - 4); }
+        if (Math.random() < 0.42){
+          r.classList.add('lit');
+          r.style.animationDelay = (reduced ? 0 : (0.4 + Math.random() * 5)) + 's';
+          lit++;
+        }
+        g.appendChild(r);
+      }
+    }
+  })();
+
+  // шапка при скролле
+  (function(){
+    var h = document.getElementById('site-header');
+    function onScroll(){ h.classList.toggle('scrolled', window.scrollY > 40); }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // reveal on scroll
+  (function(){
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (reduced || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, { threshold: .1 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // фильтр квартир (аккордеон)
+  (function(){
+    var radios = document.querySelectorAll('.tabs input[type=radio]');
+    var items = document.querySelectorAll('.flat-acc');
+    function apply(){
+      var checked = document.querySelector('.tabs input:checked');
+      var val = checked ? checked.id.replace('t-','') : 'all';
+      items.forEach(function(d){
+        d.hidden = !(val === 'all' || d.dataset.type === val);
+      });
+      // при выборе конкретного типа — раскрываем его
+      if (val !== 'all'){
+        items.forEach(function(d){ d.open = (d.dataset.type === val); });
+      }
+    }
+    radios.forEach(function(r){ r.addEventListener('change', apply); });
+    apply();
+
+    // эксклюзивное раскрытие: открыт один пункт
+    items.forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if (d.open){
+          items.forEach(function(o){ if (o !== d) o.open = false; });
+        }
+      });
+    });
+
+    // «Забронировать» подставляет тип квартиры в форму
+    var select = document.getElementById('lf-type');
+    document.querySelectorAll('.acc-info .btn[data-flat]').forEach(function(b){
+      b.addEventListener('click', function(){
+        if (!select) return;
+        var want = b.dataset.flat;
+        Array.prototype.forEach.call(select.options, function(opt){
+          if (opt.text.indexOf(want.split(' ')[0]) === 0) select.value = opt.text;
+        });
+      });
+    });
+  })();
+
+  // демо-форма
+  document.getElementById('lead-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('lead-success').classList.add('show');
+  });
+
+  // cookie
+  (function(){
+    var bar = document.getElementById('cookie');
+    try{
+      if (!localStorage.getItem('cookie_ok_premium')) {
+        setTimeout(function(){ bar.classList.add('show'); }, 900);
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function(){
+        localStorage.setItem('cookie_ok_premium','1');
+        bar.classList.remove('show');
+      });
+    }catch(err){
+      document.getElementById('cookie-accept').addEventListener('click', function(){ bar.classList.remove('show'); });
+    }
+  })();
+</script>
+
+<script>
+  /* Lottie-слой. Анимация написана как JSON вручную — по сценарию text-to-lottie
+     (github.com/diffusionstudio/lottie): агент генерирует lottie.json, плеер играет.
+     Сюда можно подставлять любые сгенерированные анимации вместо rosetteData. */
+  (function(){
+    var el = document.getElementById('rosette');
+    if (!el) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var rosetteData = {
+      "v":"5.7.4","fr":30,"ip":0,"op":1800,"w":220,"h":220,"nm":"brass-rosette","ddd":0,"assets":[],
+      "layers":[
+        {"ddd":0,"ind":1,"ty":4,"nm":"outer-dashed","sr":1,
+         "ks":{"o":{"a":0,"k":70},
+               "r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"t":1800,"s":[360]}]},
+               "p":{"a":0,"k":[110,110,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},
+         "ao":0,
+         "shapes":[{"ty":"gr","nm":"circle","it":[
+            {"ty":"el","p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[196,196]}},
+            {"ty":"st","c":{"a":0,"k":[0.788,0.639,0.369,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":1.2},"lc":1,"lj":1,
+             "d":[{"n":"d","v":{"a":0,"k":3}},{"n":"g","v":{"a":0,"k":9}}]},
+            {"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100}}
+         ]}],
+         "ip":0,"op":1800,"st":0,"bm":0},
+        {"ddd":0,"ind":2,"ty":4,"nm":"star8","sr":1,
+         "ks":{"o":{"a":0,"k":85},
+               "r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"t":1800,"s":[-360]}]},
+               "p":{"a":0,"k":[110,110,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},
+         "ao":0,
+         "shapes":[{"ty":"gr","nm":"star","it":[
+            {"ty":"sr","sy":1,"d":1,"p":{"a":0,"k":[0,0]},"pt":{"a":0,"k":8},"or":{"a":0,"k":78},"ir":{"a":0,"k":30},"os":{"a":0,"k":0},"is":{"a":0,"k":0},"r":{"a":0,"k":0}},
+            {"ty":"st","c":{"a":0,"k":[0.851,0.722,0.471,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":1},"lc":1,"lj":1},
+            {"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100}}
+         ]}],
+         "ip":0,"op":1800,"st":0,"bm":0},
+        {"ddd":0,"ind":3,"ty":4,"nm":"core","sr":1,
+         "ks":{"o":{"a":1,"k":[
+                 {"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[35]},
+                 {"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":900,"s":[90]},
+                 {"t":1800,"s":[35]}]},
+               "r":{"a":0,"k":0},"p":{"a":0,"k":[110,110,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":0,"k":[100,100,100]}},
+         "ao":0,
+         "shapes":[{"ty":"gr","nm":"dot","it":[
+            {"ty":"el","p":{"a":0,"k":[0,0]},"s":{"a":0,"k":[10,10]}},
+            {"ty":"fl","c":{"a":0,"k":[0.788,0.639,0.369,1]},"o":{"a":0,"k":100}},
+            {"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100}}
+         ]}],
+         "ip":0,"op":1800,"st":0,"bm":0}
+      ]
+    };
+
+    function fallback(){
+      el.innerHTML = '<svg viewBox="0 0 220 220" width="100%" height="100%" aria-hidden="true"><g fill="none" stroke="#c9a35e"><circle cx="110" cy="110" r="98" stroke-dasharray="3 9" opacity=".7"/><circle cx="110" cy="110" r="78" opacity=".85"/><circle cx="110" cy="110" r="5" fill="#c9a35e" stroke="none"/></g></svg>';
+    }
+    function start(){
+      try{
+        var anim = lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: !reduced, animationData: rosetteData });
+        if (reduced) anim.goToAndStop(0, true);
+      }catch(e){ fallback(); }
+    }
+    if (typeof lottie === 'undefined'){
+      window.addEventListener('load', function(){
+        if (typeof lottie === 'undefined') fallback(); else start();
+      });
+    } else { start(); }
+  })();
+</script>
+</body>
+</html>
